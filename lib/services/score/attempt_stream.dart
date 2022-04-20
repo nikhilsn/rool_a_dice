@@ -1,18 +1,26 @@
 import 'dart:async';
 
+import 'package:roll_a_dice/storage/shared_preferences_storage.dart';
+
 class AttemptStream {
   int _currentAttempts = 0;
   final StreamController<int> _attemptController = StreamController<int>();
-  // final StreamController<int> _attemptEventController = StreamController<int>();
 
   Stream<int> get attempts => _attemptController.stream;
 
-  // StreamSink<int> get attemptEventSink => _attemptEventController.sink;
+  AttemptStream() {
+    SharedPreferencesStorage().getAttempts().then((attempts) {
+      print('attempts shared: $attempts');
+      _currentAttempts = attempts;
+      _attemptController.sink.add(_currentAttempts);
+    });
+  }
 
   get increment => () {
-    _currentAttempts++;
-    _attemptController.sink.add(_currentAttempts);
-  };
+        _currentAttempts++;
+        _attemptController.sink.add(_currentAttempts);
+        SharedPreferencesStorage().setAttempts(_currentAttempts);
+      };
 
-  int get currentAttempts=>_currentAttempts;
+  int get currentAttempts => _currentAttempts;
 }

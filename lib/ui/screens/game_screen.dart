@@ -39,7 +39,6 @@ class _GameScreenState extends State<GameScreen> {
         onPressed: () {
           if (_attemptStream.currentAttempts != 10) {
             int randomDiceValue = 1 + Random().nextInt(7 - 1);
-            print(randomDiceValue);
             _scoreStream.scoreEvent.add(randomDiceValue);
             _attemptStream.increment();
           } else {
