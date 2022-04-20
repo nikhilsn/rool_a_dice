@@ -12,7 +12,7 @@ class _SinginScreenState extends State<SinginScreen> {
 
   login() async{
     await Future.delayed(Duration(seconds: 3));
-    LoginWithGoogle().signin();
+    LoginWithGoogle().signIn();
 
   }
   @override
