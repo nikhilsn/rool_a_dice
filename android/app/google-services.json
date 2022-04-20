@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "843768516578",
+    "project_id": "roll-a-dice-2c453",
+    "storage_bucket": "roll-a-dice-2c453.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:843768516578:android:df370e252a3500bd14b3bb",
+        "android_client_info": {
+          "package_name": "com.nikhil.roll_a_dice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "843768516578-gns0bvlfdmkg3gkp5sndgobijr0sqtss.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nikhil.roll_a_dice",
+            "certificate_hash": "5f3d1d54cbe7daf86a715b0292069e6cc987240d"
+          }
+        },
+        {
+          "client_id": "843768516578-1hk0t4lr06r5do1jg5vggr0ad463v4p1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8BJ1GxWMsojxTtnwJUlIdqGcGKn0UpdE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "843768516578-1hk0t4lr06r5do1jg5vggr0ad463v4p1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

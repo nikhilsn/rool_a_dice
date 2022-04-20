@@ -1,11 +1,19 @@
+import 'package:flutter/cupertino.dart';
+
 enum Environments { DEV, PROD }
 
-class AppEnvironment {
-  late Environments _env;
+class AppConfig extends InheritedWidget {
+  AppConfig({this.appDisplayName,this.environment,
+    Widget? child}):super(child: child!);
 
-  set setAppEnvironment(Environments env) {
-    _env = env;
+  final String? appDisplayName;
+  final Environments? environment;
+
+  static AppConfig? of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<AppConfig>();
   }
 
-  get getAppEnvironment => _env;
+  @override
+  bool updateShouldNotify(InheritedWidget oldWidget) => false;
+
 }
