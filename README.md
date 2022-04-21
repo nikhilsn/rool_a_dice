@@ -1,16 +1,19 @@
-# roll_a_dice
+# Roll-a-Dice
 
-A new Flutter project.
+Roll-a-dice is simple multiplayer game build using flutter and firebase.
+in this game player can press "Roll a dice" button and game provide user a Random result anywhere between 1 and 6, the player gets 10 chances to play, and every time the result of the dice roll is added to the Player's score and saved to the database.
 
-## Getting Started
+# Pattern
+Roll-a-Dice is build using BloC pattern where each business logic is kept saperated from the UI part. This game uses StreamBuilder and Provider as it neeeded.
 
-This project is a starting point for a Flutter application.
+# Storage
+Score and attempts are stored offline as well as online on Firebase's realtime database. Local storage is created using shared_preferences where current score and number of attempts are stored to let user to play game in offline mode.
 
-A few resources to get you started if this is your first Flutter project:
+# authentication
+Roll-a-Dice uses GoogleSignin method using firebase authentication which ease user to get in the game without worrying about the registration process
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+# modes
+This game is compatible with debug as well as release mode for flutter code only
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# other feature
+Game contains leaderboard option where they can get to know their postion globally.
