@@ -1,15 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:roll_a_dice/resources/FadePageRoute.dart';
+import 'package:roll_a_dice/resources/constants.dart';
 import 'package:roll_a_dice/ui/screens/game_screen.dart';
 import 'package:roll_a_dice/ui/screens/leaderboard_screen.dart';
 import 'package:roll_a_dice/ui/widgets/profile_widget.dart';
-import 'package:roll_a_dice/ui/widgets/score_widget.dart';
-
-import '../../services/authentication/google_authentication.dart';
-import '../../services/authentication/user_profile.dart';
-import '../../services/score/attempt_stream.dart';
-import '../../services/score/score_stream.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -22,8 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _playButtons() {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-            context, FadePageRoute(GameScreen()));
+        Navigator.push(context, FadePageRoute(GameScreen()));
       },
       child: Container(
         decoration: BoxDecoration(
@@ -34,11 +28,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 bottomLeft: Radius.circular(6)),
             gradient:
                 LinearGradient(colors: [Colors.brown, Colors.brown.shade400])),
-        child: const Padding(
-          padding: EdgeInsets.only(top: 8, bottom: 8, left: 16, right: 16),
+        child: Padding(
+          padding:
+              const EdgeInsets.only(top: 8, bottom: 8, left: 16, right: 16),
           child: Text(
-            'PLAY GAME',
-            style: TextStyle(
+            Constants.playGame,
+            style: const TextStyle(
                 color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
           ),
         ),
@@ -49,8 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _leaderBoardButtons() {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-            context, FadePageRoute(const LeaderBoardScreen()));
+        Navigator.push(context, FadePageRoute(const LeaderBoardScreen()));
       },
       child: Container(
         decoration: BoxDecoration(
@@ -61,11 +55,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 bottomRight: Radius.circular(6)),
             gradient:
                 LinearGradient(colors: [Colors.brown, Colors.brown.shade400])),
-        child: const Padding(
-          padding: EdgeInsets.only(top: 8, bottom: 8, left: 16, right: 16),
+        child: Padding(
+          padding:
+              const EdgeInsets.only(top: 8, bottom: 8, left: 16, right: 16),
           child: Text(
-            'LEADERBOARD',
-            style: TextStyle(
+            Constants.leaderBoard,
+            style: const TextStyle(
                 color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
           ),
         ),
@@ -83,27 +78,62 @@ class _HomeScreenState extends State<HomeScreen> {
           decoration: const BoxDecoration(
               gradient: RadialGradient(
                   colors: [Colors.lightBlueAccent, Colors.blue], radius: 0.8)),
-          child: Column(
+          child: Stack(
             children: [
-              const ProfileWidget(),
-              const SizedBox(
-                height: 5,
-              ),
-              ScoreWidget(),
-              Expanded(
-                  child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    _playButtons(),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    _leaderBoardButtons()
-                  ],
+              Positioned(
+                top: 200,
+                left: 20,
+                child: Image.asset(
+                  'assets/dice1.png',
+                  scale: 0.9,
                 ),
-              ))
+              ),
+              Positioned(
+                top: 300,
+                right: 20,
+                child: Image.asset(
+                  'assets/dice3.png',
+                  scale: 0.9,
+                ),
+              ),
+              Positioned(
+                bottom: 200,
+                left: 100,
+                child: Image.asset(
+                  'assets/dice5.png',
+                  scale: 0.9,
+                ),
+              ),
+              Positioned(
+                bottom: 300,
+                right: 20,
+                child: Image.asset(
+                  'assets/dice6.png',
+                  scale: 0.9,
+                ),
+              ),
+              Column(
+                children: [
+                  const ProfileWidget(),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Expanded(
+                      child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        _playButtons(),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        _leaderBoardButtons()
+                      ],
+                    ),
+                  ))
+                ],
+              ),
             ],
           ),
         ),

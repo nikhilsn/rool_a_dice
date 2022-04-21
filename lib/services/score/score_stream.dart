@@ -9,8 +9,10 @@ class ScoreStream {
   int _userScore = 0;
   final StreamController<int> _scoreController = StreamController<int>();
   final StreamController<int> _scoreEventController = StreamController<int>();
+  final StreamController<int> _currentValueController = StreamController<int>();
 
   Stream<int> get score => _scoreController.stream;
+  Stream<int> get currentValue => _currentValueController.stream;
 
   StreamSink<int> get scoreEvent => _scoreEventController.sink;
 
@@ -29,6 +31,7 @@ class ScoreStream {
     _scoreEventController.stream.listen((score) {
       _userScore = _userScore + score;
       _scoreController.sink.add(_userScore);
+      _currentValueController.sink.add(score);
       SharedPreferencesStorage().setScore(_userScore);
       FirebaseRealtimeStorage().setUserValue(_userScore, Constants.score);
     });

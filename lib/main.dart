@@ -8,7 +8,8 @@ import 'package:roll_a_dice/ui/screens/game_screen.dart';
 import 'package:roll_a_dice/ui/screens/home_screen.dart';
 
 class MyApp extends StatelessWidget {
-  final FirebaseUserStream _userStream=  FirebaseUserStream();
+  final FirebaseUserStream _userStream = FirebaseUserStream();
+
   @override
   Widget build(BuildContext context) {
     var _appConfig = AppConfig.of(context);
@@ -17,19 +18,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: _appConfig!.appDisplayName!,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.brown,
       ),
-      home:
-      StreamBuilder<bool>(
+      home: StreamBuilder<bool>(
           stream: _userStream.userStream,
           builder: (context, snapshot) {
-            if (snapshot.hasData && snapshot.connectionState==ConnectionState.active) {
+            if (snapshot.hasData &&
+                snapshot.connectionState == ConnectionState.active) {
               if (snapshot.data!) {
                 return HomeScreen();
               } else {
                 return _appConfig.environment == Environments.DEV
                     ? const SinginScreen()
-                    : Container();
+                    : const SinginScreen();
               }
             }
             return Container(
