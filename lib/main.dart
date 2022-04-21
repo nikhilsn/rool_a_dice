@@ -5,6 +5,7 @@ import 'package:roll_a_dice/resources/environment_constants.dart';
 import 'package:roll_a_dice/services/authentication/firebase_user_stream.dart';
 import 'package:roll_a_dice/ui/screens/authentication/singin_screen.dart';
 import 'package:roll_a_dice/ui/screens/game_screen.dart';
+import 'package:roll_a_dice/ui/screens/home_screen.dart';
 
 class MyApp extends StatelessWidget {
   final FirebaseUserStream _userStream=  FirebaseUserStream();
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
           builder: (context, snapshot) {
             if (snapshot.hasData && snapshot.connectionState==ConnectionState.active) {
               if (snapshot.data!) {
-                return GameScreen();
+                return HomeScreen();
               } else {
                 return _appConfig.environment == Environments.DEV
                     ? const SinginScreen()
