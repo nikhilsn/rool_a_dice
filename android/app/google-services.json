@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "843768516578",
+    "firebase_url": "https://roll-a-dice-2c453-default-rtdb.firebaseio.com",
     "project_id": "roll-a-dice-2c453",
     "storage_bucket": "roll-a-dice-2c453.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "843768516578-9k142f2flt3eogeo9s6trk5l24bsjm6v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nikhil.roll_a_dice",
+            "certificate_hash": "ece84d14318cb3e2a3489f0acfa2a4e0e87de6ac"
+          }
+        },
         {
           "client_id": "843768516578-gns0bvlfdmkg3gkp5sndgobijr0sqtss.apps.googleusercontent.com",
           "client_type": 1,

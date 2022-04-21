@@ -1,11 +1,29 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:roll_a_dice/resources/constants.dart';
 import 'package:roll_a_dice/resources/environment_constants.dart';
 import 'package:roll_a_dice/services/authentication/firebase_user_stream.dart';
+import 'package:roll_a_dice/services/leaderboard_stream/leaderboard_stream.dart';
 import 'package:roll_a_dice/ui/screens/authentication/singin_screen.dart';
-import 'package:roll_a_dice/ui/screens/game_screen.dart';
 import 'package:roll_a_dice/ui/screens/home_screen.dart';
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  final appConfig = AppConfig(
+    appDisplayName: Constants.appName,
+    environment: Environments.DEV,
+    child: MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => LeaderBoardProvider()),
+      ],
+      child: MyApp(),
+    ),
+  );
+
+  runApp(appConfig);
+}
 
 class MyApp extends StatelessWidget {
   final FirebaseUserStream _userStream = FirebaseUserStream();
@@ -28,9 +46,7 @@ class MyApp extends StatelessWidget {
               if (snapshot.data!) {
                 return HomeScreen();
               } else {
-                return _appConfig.environment == Environments.DEV
-                    ? const SinginScreen()
-                    : const SinginScreen();
+                return const SinginScreen();
               }
             }
             return Container(
